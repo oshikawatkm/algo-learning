@@ -2,14 +2,20 @@ from typing import List
 
 def bubble_sort(numbers: List[int]) -> List[int]:
     len_numbers = len(numbers)
-    for i in range(len_numbers):
-        for j in range(len_numbers - 1 -i):
-            if numbers[j] > numbers[j+1]:
-                numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
+    index = 0
+    while index < len_numbers:
+        if index == 0:
+            index += 1
+        if numbers[index] > numbers[index-1]:
+            index += 1
+        else:
+            numbers[index], numbers[index-1] = numbers[index-1], numbers[index]
+            index -= 1
+            
     return numbers
 
 
 if __name__ == '__main__':
     import random
     nums = [random.randint(0, 1000) for i in range(10)]
-    print(bubble_sort(nums))
+    print(bubble_sort(nums)) 
